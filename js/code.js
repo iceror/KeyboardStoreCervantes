@@ -4,7 +4,7 @@ function productList() {
 }
 
 let productSelection = productList();
-console.log(productSelection);
+// console.log(productSelection);
 
 function price(productPrice) {
     switch (productPrice) {
