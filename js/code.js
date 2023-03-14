@@ -1,15 +1,14 @@
 function productList() {
-    let product = prompt('¿Qué artículo deseas comprar? \n1-Yamaha Keyboard: $2500 + IVA \n2-Casio Keyboard: $3000 + IVA \n3-Roland Keyboard: $2000 + IVA');
+    let product = prompt('¿Qué artículo deseas comprar? \n1-Yamaha Keyboard: $2500 + IVA \n2-Casio Keyboard: $3000 + IVA \n3-Roland Keyboard: $2000 + IVA \n0-Salir');
     return (product);
 }
 
-let productSelection = productList();
 // console.log(productSelection);
 
 function price(productPrice) {
     switch (productPrice) {
         case '1':
-            alert('Total = ' + '$ '+ (2500 * 1.16));
+            alert('Total = ' + '$ ' + (2500 * 1.16));
             break;
         case '2':
             alert('Total = ' + '$ ' + (3000 * 1.16));
@@ -22,7 +21,12 @@ function price(productPrice) {
     }
 }
 
-price(productSelection);
+
+do {
+    let productSelection = productList();
+    price(productSelection);
+
+} while (productSelection != '0');
 
 
 /*
