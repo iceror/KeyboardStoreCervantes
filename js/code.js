@@ -21,7 +21,7 @@ const keyboards = [
 ]
 
 function productList() {
-    let product = prompt('¿Qué artículo deseas comprar? \n1-Yamaha Keyboard: $2500 + IVA \n2-Casio Keyboard: $3000 + IVA \n3-Roland Keyboard: $2000 + IVA \n0-Salir');
+    let product = prompt('¿Qué artículo deseas comprar? \n1-Yamaha Keyboard: $2500 + IVA \n2-Casio Keyboard: $3000 + IVA \n3-Roland Keyboard: $2000 + IVA \n0-Salir \n¡Tenemos 10% de descuento en ciertos artículos!');
     return (product);
 }
 
