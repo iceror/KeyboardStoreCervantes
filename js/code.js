@@ -1,55 +1,51 @@
+//ARRAY PRODUCTOS
+const keyboards = [
+    {
+        id: 1,
+        brand: 'Yamaha',
+        price: 2500,
+        discount: true,
+    },
+    {
+        id: 2,
+        brand: 'Casio',
+        price: 3000,
+        discount: true,
+    },
+    {
+        id: 3,
+        brand: 'Roland',
+        price: 2000,
+        discount: false,
+    }
+]
+
 function productList() {
     let product = prompt('¿Qué artículo deseas comprar? \n1-Yamaha Keyboard: $2500 + IVA \n2-Casio Keyboard: $3000 + IVA \n3-Roland Keyboard: $2000 + IVA \n0-Salir');
     return (product);
 }
 
-// console.log(productSelection);
+function price(userInput) {
+    let selectedProduct = keyboards[userInput - 1];
+    let price = calculatePrice(selectedProduct);
+    alert('Total = ' + '$ ' + price);
+}
 
-function price(productPrice) {
-    switch (productPrice) {
-        case '1':
-            alert('Total = ' + '$ ' + (2500 * 1.16));
-            break;
-        case '2':
-            alert('Total = ' + '$ ' + (3000 * 1.16));
-            break;
-        case '3':
-            alert('Total = ' + '$ ' + (2000 * 1.16));
-            break;
-        default:
-            break;
+
+function calculatePrice(selectedProduct) {
+    let iva = 1.16;
+    let price = (selectedProduct.price * iva);
+
+    if (selectedProduct.discount == true) {
+        return(price * .90);
+    } else {
+        return(price);
     }
 }
 
 
 do {
-    let productSelection = productList();
-    price(productSelection);
+    let userInput = productList();
+    price(userInput);
 
-} while (productSelection != '0');
-
-
-/*
-let productQuantity = 0;
-let totalPrice = 0;
-
-let price = document.getElementById("price1").price1;
-
-document.getElementById("count").innerHTML = productQuantity;
-document.getElementById("sum").innerHTML = totalPrice;
-
-document.getElementById("add-product").addEventListener("click", productCount);
-
-function productCount() {
-    productQuantity++;
-    document.getElementById("count").innerHTML = productQuantity;
-}
-
-let value = document.getElementById("price1").innerHTML;
-
-function productPrice() {
-    totalPrice;
-    document.getElementById("sum").innerHTML = totalPrice;
-}
-
-*/
+} while (userInput != '0');
