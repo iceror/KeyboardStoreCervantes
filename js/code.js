@@ -26,7 +26,7 @@ function productList() {
 }
 
 function price(userInput) {
-    let selectedProduct = keyboards[userInput - 1];
+    let selectedProduct = keyboards.find(keyboard => keyboard.id === Number(userInput));
     let price = calculatePrice(selectedProduct);
     alert('Total = ' + '$ ' + price);
 }
@@ -43,6 +43,12 @@ function calculatePrice(selectedProduct) {
     }
 }
 
+function getDiscountedProducts(){
+    const result = keyboards.filter(keyboard => keyboard.discount == true);
+    console.log(result);
+}
+
+getDiscountedProducts();
 
 do {
     let userInput = productList();
