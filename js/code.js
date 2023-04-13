@@ -25,6 +25,7 @@ function productList() {
     return (product);
 }
 
+
 function price(userInput) {
     let selectedProduct = keyboards.find(keyboard => keyboard.id === Number(userInput));
     let price = calculatePrice(selectedProduct);

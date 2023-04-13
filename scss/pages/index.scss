@@ -1,0 +1,26 @@
+header {
+  @extend %flex-header;
+  width: 100%;
+  height: 5rem;
+  background-color: black;
+  color: white;
+  font-family: Nunito;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+}
+
+main {
+  background-color: white;
+}
+
+.products {
+  @extend %flex-header;
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
+}

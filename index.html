@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keyboard Store</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/build.css">
+
+  <title>Keyboard Store</title>
 </head>
+
 <body>
+  <header>
+    
+      <h1 class="brand">Keyboard Store</h1>
+      <div>
+        <a href="">
+          Cart items:
+          <span id="count">0</span>,
+          Price:
+          <span id="sum">0</span>
+        </a>
+      </div>
 
-<header>
-    <div class="toolbar">
-        <h1 class="brand">Keyboard Store</h1>
-        <p>
-            <a href="cart.html">
-                Cart items:
-                <span id="count">0</span>, 
-                Price:
-                <span id="sum">0</span>
-            </a>
-        </p>
-    </div>
-</header>
+  </header>
 
-<div class="products">
-    <div>
+  <main>
+    <section class="products">
+      <div>
         <h3>Product</h3>
         <img src="./img/yamaha1.jpeg" alt="">
         <p id="price1">$2500</p>
         <button id="add-product">Add to cart</button>
-    </div>
-    <div>
+      </div>
+      <div>
         <h3>Product</h3>
         <img src="./img/casio1.avif" alt="">
         <p>$3000</p>
-        <button id="add-product" >Add to cart</button>
-    </div>
-    <div>
+        <button id="add-product">Add to cart</button>
+      </div>
+      <div>
         <h3>Product</h3>
         <img src="./img/roland1.jpg" alt="">
         <p>$2000</p>
         <button id="add-product">Add to cart</button>
-    </div>
+      </div>
+    </section>
+  </main>
 
-</div>
-    <script src="./js/code.js"></script>
+  </div>
+  <script src="./js/code.js"></script>
 </body>
+
 </html>
