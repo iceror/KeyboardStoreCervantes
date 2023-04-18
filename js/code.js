@@ -58,12 +58,7 @@ function getProduct(id) {
 
 function calculatePrice(selectedProduct) {
   let price = selectedProduct.price;
-
-  if (selectedProduct.discount == true) {
-    return (price * .90);
-  } else {
-    return (price);
-  }
+  return selectedProduct.discount ? price * .90 : price;
 }
 
 getDiscountedProducts();
