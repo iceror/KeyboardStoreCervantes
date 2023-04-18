@@ -14,11 +14,22 @@ header {
 }
 
 main {
-  background-color: white;
+  height: calc(100vh - 5rem);
+
 }
 
-.products {
-  @extend %flex-header;
+.discounts-container {
+  margin-top: 2rem; 
+  @extend %flex-products;
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+.products-container {
+  margin-top: 2rem; 
+  @extend %flex-products;
   img {
     width: 10rem;
     height: 10rem;
