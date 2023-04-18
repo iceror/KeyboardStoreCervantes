@@ -1,5 +1,3 @@
-//ARRAY PRODUCTOS
-
 const keyboards = [
   {
     id: 1,
@@ -31,37 +29,35 @@ const keyboards = [
   }
 ]
 
-const productCards = document.querySelector('#products');
+function createProductCards(products, container){
+  products.forEach(keyboard => {
+    const card = document.createElement('div');
+    card.innerHTML = `
+    <img src='${keyboard.image}'>
+    <h3>${keyboard.brand}</h3>
+    <h3>$${calculatePrice(keyboard)}</h3> 
+  
+    <button onclick=${`addToCart(${keyboard.id})`} class='add-button'>Agregar al carrito</button>
+    `
 
-keyboards.forEach(keyboard => {
-  const card = document.createElement('div');
-  card.innerHTML = `
-  <img src='${keyboard.image}'>
-  <h3>${keyboard.brand}</h3>
-  <h3>$${keyboard.price}</h3>
-
-  <button id=${keyboard.id} class='add-button'>Agregar al carrito</button>
-  `
-  products.appendChild(card);
-}
-)
-
-function productList() {
-  let product = prompt('¿Qué artículo deseas comprar? \n1-Yamaha Keyboard: $2500 + IVA \n2-Casio Keyboard: $3000 + IVA \n3-Roland Keyboard: $2000 + IVA \n0-Salir \n¡Tenemos 10% de descuento en ciertos artículos!');
-  return (product);
+    document.querySelector(`#${container}-container`).appendChild(card);
+  });
 }
 
+createProductCards(keyboards, 'products');
 
-function price(userInput) {
-  let selectedProduct = keyboards.find(keyboard => keyboard.id === Number(userInput));
-  let price = calculatePrice(selectedProduct);
-  alert('Total = ' + '$ ' + price);
+function getDiscountedProducts() {
+  const discountedProducts = keyboards.filter(keyboard => keyboard.discount == true);
+  createProductCards(discountedProducts, 'discounts');
+
 }
 
+function getProduct(id) {
+  return keyboards.find(keyboard => keyboard.id === Number(id));
+}
 
 function calculatePrice(selectedProduct) {
-  let iva = 1.16;
-  let price = (selectedProduct.price * iva);
+  let price = selectedProduct.price;
 
   if (selectedProduct.discount == true) {
     return (price * .90);
@@ -70,15 +66,28 @@ function calculatePrice(selectedProduct) {
   }
 }
 
-function getDiscountedProducts() {
-  const result = keyboards.filter(keyboard => keyboard.discount == true);
-  console.log(result);
-}
-
 getDiscountedProducts();
 
-do {
-  let userInput = productList();
-  price(userInput);
-} while (userInput != '0');
+function addToCart(id) {
+  let cart = localStorage.getItem("cart");
+  if (!cart) {
+    localStorage.setItem("cart", JSON.stringify([getProduct(id)]));
+  } else {
+    let addedProducts = JSON.parse(cart);
+    addedProducts.push(getProduct(id));
+    localStorage.setItem("cart", JSON.stringify(addedProducts));
+  }
+  updateTotals();
+}
 
+function updateTotals() {
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  document.getElementById("count").textContent = cart.length;
+  let total = 0;
+  for (const product of cart) {
+    total += calculatePrice(product);
+  }
+  document.getElementById("sum").textContent = total;
+}
+
+updateTotals();
