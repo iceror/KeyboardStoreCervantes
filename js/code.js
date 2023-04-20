@@ -25,7 +25,8 @@ const keyboards = [
     brand: 'Roland',
     price: 3500,
     discount: true,
-    
+    image: './img/roland2.webp'
+  
   }
 ]
 
