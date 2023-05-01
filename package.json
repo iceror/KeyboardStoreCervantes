@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "node-sass --include-path scss scss/main.scss css/build.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "start": "serve ./"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "devDependencies": {
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
   }
 }
