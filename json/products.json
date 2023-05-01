@@ -1,0 +1,30 @@
+[
+  {
+      "id": 1,
+      "brand": "Yamaha",
+      "price": 2500,
+      "discount": true,
+      "image": "img/yamaha1.jpeg"
+  },
+  {
+      "id": 2,
+      "brand": "Casio",
+      "price": 3000,
+      "discount": true,
+      "image": "./img/casio1.avif"
+  },
+  {
+      "id": 3,
+      "brand": "Roland",
+      "price": 2000,
+      "discount": false,
+      "image": "./img/roland1.jpg"
+  },
+  {
+      "id": 4,
+      "brand": "Roland",
+      "price": 3500,
+      "discount": true,
+      "image": "./img/roland2.webp"
+  }
+]
