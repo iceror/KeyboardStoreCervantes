@@ -19,9 +19,10 @@ header {
   align-items: center;
   justify-content: space-between; }
 
-.discounts-container, .products-container {
+.discounts-container, .products .products-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly; }
 
@@ -44,21 +45,43 @@ header {
 main {
   height: calc(100vh - 5rem); }
 
-.discounts-banner h2 {
-  text-align: center;
-  font-family: Nunito; }
+.discounts-banner {
+  padding: 1rem; }
+  .discounts-banner h2 {
+    text-align: center;
+    font-family: Nunito;
+    margin: .5rem; }
 
-.discounts-container div {
-  font-family: Nunito; }
-
-.discounts-container img {
-  width: 10rem;
-  height: 10rem; }
-
-.products-container {
-  margin-top: 2rem; }
-  .products-container div {
-    font-family: Nunito; }
-  .products-container img {
+.discounts-container {
+  flex-wrap: wrap; }
+  .discounts-container div {
+    font-family: Nunito;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d1d1d1;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem; }
+  .discounts-container img {
     width: 10rem;
     height: 10rem; }
+
+.products {
+  font-family: Nunito;
+  text-align: center; }
+  .products .products-container {
+    margin-top: 2rem; }
+    .products .products-container div {
+      font-family: Nunito;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #d1d1d1;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 0.5rem;
+      flex-wrap: wrap; }
+    .products .products-container img {
+      width: 10rem;
+      height: 10rem; }
