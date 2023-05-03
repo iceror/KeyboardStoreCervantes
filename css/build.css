@@ -34,8 +34,12 @@ header {
   header a {
     text-decoration: none;
     color: white; }
-  header .cart-sum .cart {
-    width: 2rem; }
+  header .cart-sum {
+    background-color: #232020;
+    padding: 0.4rem;
+    border-radius: 0.5rem; }
+    header .cart-sum .cart {
+      width: 2rem; }
 
 main {
   height: calc(100vh - 5rem); }
