@@ -4,6 +4,15 @@
   padding: 0;
   box-sizing: border-box; }
 
+.add-button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  font-family: Nunito; }
+  .add-button:hover {
+    cursor: pointer;
+    background-color: #898b92; }
+
 header {
   display: flex;
   flex-direction: row;
@@ -25,18 +34,27 @@ header {
   header a {
     text-decoration: none;
     color: white; }
+  header .cart-sum .cart {
+    width: 2rem; }
 
 main {
   height: calc(100vh - 5rem); }
 
-.discounts-container {
-  margin-top: 2rem; }
-  .discounts-container img {
-    width: 10rem;
-    height: 10rem; }
+.discounts-banner h2 {
+  text-align: center;
+  font-family: Nunito; }
+
+.discounts-container div {
+  font-family: Nunito; }
+
+.discounts-container img {
+  width: 10rem;
+  height: 10rem; }
 
 .products-container {
   margin-top: 2rem; }
+  .products-container div {
+    font-family: Nunito; }
   .products-container img {
     width: 10rem;
     height: 10rem; }

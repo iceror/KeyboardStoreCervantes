@@ -6,3 +6,14 @@
     box-sizing: border-box;
 }
 
+.add-button{
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  font-family: Nunito;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(137, 139, 146);
+  }
+}
+

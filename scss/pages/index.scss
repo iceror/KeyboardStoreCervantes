@@ -11,6 +11,11 @@ header {
     color: white;
   }
 
+  .cart-sum {
+    .cart {
+      width: 2rem;
+    }
+  }
 }
 
 main {
@@ -18,8 +23,17 @@ main {
 
 }
 
+.discounts-banner {
+  h2 {
+    text-align: center;
+    font-family: Nunito;
+  }
+}
+
 .discounts-container {
-  margin-top: 2rem; 
+  div {
+    font-family: Nunito
+  }
   @extend %flex-products;
   img {
     width: 10rem;
@@ -28,6 +42,9 @@ main {
 }
 
 .products-container {
+  div {
+    font-family: Nunito
+  }
   margin-top: 2rem; 
   @extend %flex-products;
   img {
