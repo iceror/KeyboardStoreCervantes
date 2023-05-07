@@ -11,7 +11,7 @@ async function createProductCards(container) {
   if (container == 'discounts') {
     keyboards = keyboards.filter(keyboard => keyboard.discount == true);
   }
-  
+
   keyboards.forEach(keyboard => {
     const card = document.createElement('div');
     card.innerHTML = `
@@ -21,10 +21,10 @@ async function createProductCards(container) {
     
     <button onclick=${`addToCart(${keyboard.id})`} class='add-button'>Agregar al carrito</button>
     `
-    
+
     document.querySelector(`#${container}-container`).appendChild(card);
   });
-  
+
 }
 
 createProductCards('products');
