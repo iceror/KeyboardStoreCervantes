@@ -26,40 +26,5 @@
       "price": 3500,
       "discount": true,
       "image": "./img/roland2.webp"
-  },
-  {
-    "id": 5,
-    "brand": "Roland",
-    "price": 3500,
-    "discount": false,
-    "image": "./img/roland2.webp"
-},
-{
-  "id": 6,
-  "brand": "Roland",
-  "price": 3500,
-  "discount": true,
-  "image": "./img/roland2.webp"
-},
-{
-  "id": 7,
-  "brand": "Roland",
-  "price": 3500,
-  "discount": false,
-  "image": "./img/roland2.webp"
-},
-{
-  "id": 8,
-  "brand": "Roland",
-  "price": 3500,
-  "discount": true,
-  "image": "./img/roland2.webp"
-},
-{
-  "id": 9,
-  "brand": "Roland",
-  "price": 3500,
-  "discount": false,
-  "image": "./img/roland2.webp"
-}
+  }
 ]

@@ -5,7 +5,7 @@ header {
   background-color: black;
   color: white;
   font-family: Nunito;
-  
+
   //position: fixed;
 
   a {
@@ -37,12 +37,16 @@ main {
   h2 {
     text-align: center;
     font-family: Nunito;
+    font-size: 2.5rem;
+    font-weight: 800;
     margin: .5rem;
   }
 }
 
+
 .discounts-container {
   flex-wrap: wrap;
+
   div {
     font-family: Nunito;
     display: flex;
@@ -65,9 +69,11 @@ main {
 .products {
   font-family: Nunito;
   text-align: center;
+
   .products-container {
     margin-top: 2rem;
     @extend %flex-products;
+
     div {
       font-family: Nunito;
       display: flex;
@@ -79,8 +85,8 @@ main {
       border-radius: 0.5rem;
       flex-wrap: wrap;
     }
-  
-  
+
+
     img {
       width: 10rem;
       height: 10rem;
