@@ -58,6 +58,8 @@ main {
   .discounts-banner h2 {
     text-align: center;
     font-family: Nunito;
+    font-size: 2.5rem;
+    font-weight: 800;
     margin: .5rem; }
 
 .discounts-container {
@@ -109,8 +111,10 @@ main {
     justify-content: center; }
   main .product-list div {
     width: 100vw; }
-    main .product-list div img {
+    main .product-list div .cart-item {
       width: 8rem; }
+    main .product-list div .delete-item {
+      width: 2rem; }
   main .total {
     display: flex;
     flex-direction: column;

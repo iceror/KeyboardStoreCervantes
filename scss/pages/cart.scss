@@ -20,10 +20,14 @@ main {
     div {
       @extend %flex-cart-table;
       width: 100vw;
-      img {
+      .cart-item {
         width: 8rem;
       }
+      .delete-item {
+        width: 2rem;
+      }
     }
+
   }
 
   .total {
