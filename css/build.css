@@ -115,6 +115,8 @@ main {
       width: 8rem; }
     main .product-list div .delete-item {
       width: 2rem; }
+      main .product-list div .delete-item:hover {
+        cursor: pointer; }
   main .total {
     display: flex;
     flex-direction: column;

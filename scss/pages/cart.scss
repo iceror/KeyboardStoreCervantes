@@ -20,11 +20,17 @@ main {
     div {
       @extend %flex-cart-table;
       width: 100vw;
+
       .cart-item {
         width: 8rem;
       }
+
       .delete-item {
         width: 2rem;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 
