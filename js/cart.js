@@ -150,14 +150,13 @@ function deleteItems(id) {
 }
 
 
-if (window.location.pathname === '/') {
-
+if (window.location.pathname.includes('cart')) {
+  //CART
+  showCartItems();
+} else {
   //INDEX
   createProductCards('products');
   createProductCards('discounts');
-} else {
-  //CART
-  showCartItems();
 }
 
 //BOTH
