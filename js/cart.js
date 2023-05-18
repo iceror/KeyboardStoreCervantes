@@ -9,13 +9,15 @@ async function createProductCards(container) {
     card.innerHTML = `
   <img src='${keyboard.image}'>
   <h3>${keyboard.brand}</h3>
-  <h3>$${calculatePrice(keyboard)}</h3> 
+  <h3 style = 'text-decoration: line-through'>${keyboard.discount ? '$' + keyboard.price : '<br/>'}</h3>
+  
+  <h3>$${keyboard.discount ? keyboard.price * .90 : keyboard.price}</h3> 
   
   <button  class='add-button'>Agregar al carrito</button>
   `
 
     card.addEventListener('click', function () {
-      addToCart(keyboard.id)
+      addToCart(keyboard.id);
     });
 
     document.querySelector(`#${container}-container`).appendChild(card);
@@ -23,19 +25,41 @@ async function createProductCards(container) {
   });
 }
 
-// onclick=${`addToCart(${keyboard.id})`}
-
 async function addToCart(id) {
   let cart = localStorage.getItem("cart");
+  let productToAdd = await getProduct(id)
+
   if (!cart) {
     let arr = [];
-    arr.push(await getProduct(id))
+    productToAdd.quantity = 1
+    arr.push(productToAdd);
     localStorage.setItem("cart", JSON.stringify(arr));
+    console.log('added first item! :DD');
   } else {
-    let addedProducts = JSON.parse(cart);
-    addedProducts.push(await getProduct(id));
-    localStorage.setItem("cart", JSON.stringify(addedProducts));
+
+    let currentProductsArray = JSON.parse(cart);
+
+    //If product already exists then quantity++
+    if (currentProductsArray.filter(element => element.id === id).length > 0) {
+      let foundIndex = currentProductsArray.findIndex(x => x.id === id);
+      currentProductsArray[foundIndex].quantity++
+    } else {
+      //else add product for the first time 
+      productToAdd.quantity = 1
+      currentProductsArray.push(productToAdd);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(currentProductsArray));
   }
+
+  Swal.fire({
+    position: 'top',
+    icon: 'success',
+    title: 'Agregado al carrito',
+    showConfirmButton: false,
+    timer: 1200
+  })
+
   updateTotals();
 }
 
@@ -45,19 +69,19 @@ async function getProducts() {
   return json;
 }
 
-
 async function getProduct(id) {
   const keyboards = await getProducts();
   return keyboards.find(keyboard => keyboard.id === Number(id));
 }
 
-function calculatePrice(selectedProduct) {
-  let price = selectedProduct.price;
-  return selectedProduct.discount ? price * .90 : price;
+function calculatePrice(keyboard) {
+  let price = keyboard.price * keyboard.quantity;
+  return keyboard.discount ? price * .90 : price;
 }
 
 function updateTotals() {
   let cart = JSON.parse(localStorage.getItem("cart"));
+  // console.log(cart);
   document.getElementById("count").textContent = cart.length;
 
   if (cart.length > 0) {
@@ -66,6 +90,7 @@ function updateTotals() {
       total += calculatePrice(product);
     }
     document.getElementById("sum").textContent = total;
+    // cart.html total
     document.getElementById("total").textContent = 'Total: ' + total;
   }
 }
@@ -86,23 +111,43 @@ function filterDuplicates(a) {
 
 function showCartItems() {
   const parsedCart = parseCart();
-  const newArrayDuplicates = filterDuplicates(parsedCart);
-  Object.keys(newArrayDuplicates).forEach(async function (key) {
-    //console.log('Id : ' + key + ', Quantity : ' + newArrayDuplicates[key])
-    let currentKeyboard = await getProduct(key);
-    //console.log(currentKeyboard);
+
+  parsedCart.forEach(singleProduct => {
     const listElement = document.createElement('div');
     listElement.innerHTML = `
-    <img src='../${currentKeyboard.image}'>
-    <h3>${currentKeyboard.brand} </h3>
-    <h3>$${calculatePrice(currentKeyboard)} </h3>
-    <p> Cantidad: ${newArrayDuplicates[key]} </p> 
+    <img src='../${singleProduct.image}' class="cart-item">
+    <h3>${singleProduct.brand} </h3>
+    <h3>$${calculatePrice(singleProduct)} </h3>
+    <p> Cantidad: ${singleProduct.quantity} </p> 
+    <img src='../img/x-cross.png' class="delete-item" id='${singleProduct.id}'>
     `
 
     document.querySelector(`#product-list`).appendChild(listElement);
-  })
+
+    const deleteSymbol = document.getElementById(`${singleProduct.id}`);
+    deleteSymbol.addEventListener('click', function () { deleteItems(singleProduct.id); });
+  });
 
 };
+
+function deleteItems(id) {
+  let cart = localStorage.getItem("cart");
+  let addedProducts = JSON.parse(cart);
+
+    addedProducts = addedProducts.filter(item => item.id !== id);
+    localStorage.setItem("cart", JSON.stringify(addedProducts));
+  
+  
+  Swal.fire({
+    position: 'top',
+    icon: 'error',
+    title: 'Eliminado del carrito',
+    showConfirmButton: false,
+    timer: 1200
+  })
+  
+  setTimeout(() => { location.reload(); }, 1300);
+}
 
 
 if (window.location.pathname === '/') {
@@ -117,3 +162,4 @@ if (window.location.pathname === '/') {
 
 //BOTH
 updateTotals();
+
